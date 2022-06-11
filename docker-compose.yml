@@ -71,7 +71,7 @@ services:
       - postgres_user
       - postgres_db
     volumes:
-      - ./_DBSYNCDATA/${NETWORK:-mainnet}:/var/lib/cdbsync
+      - db-sync-data:/var/lib/cexplorer
       - node-ipc:/node-ipc
     restart: on-failure
     logging:
@@ -79,6 +79,7 @@ services:
       options:
         max-size: "200k"
         max-file: "10"
+
 
 secrets:
   postgres_db:
@@ -89,7 +90,7 @@ secrets:
     file: ./config/secrets/postgres_user
 
 volumes:
-  #db-sync-data:
+  db-sync-data:
   #postgres:
   node-db:
   node-ipc:
